@@ -1,16 +1,79 @@
-# React + Vite
+# Drip Store 👟
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto de uma loja virtual de produtos esportivos desenvolvido com React e Vite, seguindo o layout proposto no Figma.
 
-Currently, two official plugins are available:
+## ✨ Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Página inicial com banner e coleções em destaque.
+- Listagem de produtos.
+- Filtros por marca e categoria.
+- Ordenação por preço.
+- Página de detalhes do produto.
+- Galeria de imagens.
+- Seleção de tamanho.
+- Seção de produtos relacionados.
+- Layout responsivo para dispositivos móveis.
 
-## React Compiler
+## 🛠️ Tecnologias utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- Vite
+- React Router DOM
+- CSS Modules
+- ESLint
 
-## Expanding the ESLint configuration
+## 🚀 Como executar o projeto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**1.** Clone o repositório:
+
+```bash
+git clone https://github.com/JMorais00/projeto-geracao-tech-4.git
+```
+
+**2.** Entre na pasta:
+
+```bash
+cd projeto-geracao-tech-4
+```
+
+**3.** Instale as dependências:
+
+```bash
+npm install
+```
+
+**4.** Inicie o projeto:
+
+```bash
+npm run dev
+```
+
+**5.** Abra no navegador o endereço local informado pelo Vite.
+
+## 📁 Estrutura do projeto
+
+```text
+src/
+├── assets/
+├── components/
+├── pages/
+├── App.jsx
+├── main.jsx
+└── index.css
+
+public/
+```
+
+## ✅ Verificações
+
+O projeto foi verificado com:
+
+```bash
+npm run lint
+npm run build
+```
+
+## 👩‍💻 Autoria
+
+Desenvolvido como projeto acadêmico da Digital College.
