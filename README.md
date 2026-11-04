@@ -1,117 +1,127 @@
-# 👟 Drip Store
+# Drip Store — Projeto Digital College
 
-Projeto de desenvolvimento de uma loja virtual de produtos esportivos, construído com React e Vite, a partir do layout de referência desenvolvido no Figma.
+## 1. Apresentação
 
-O projeto foi desenvolvido como atividade acadêmica da Digital College, com foco na construção de interfaces, reutilização de componentes, navegação entre páginas e responsividade.
+O **Drip Store** é um projeto acadêmico de desenvolvimento Front-end criado com **React** e **JavaScript**. A proposta é construir a interface de uma loja virtual de artigos esportivos com base no layout de referência disponibilizado no Figma.
 
-## 🌐 Projeto online
+O desenvolvimento foi concentrado nas três páginas principais da atividade:
 
-Acesse a versão publicada:
+1. Home;
+2. Listagem de Produtos;
+3. Visualização do Produto.
 
-**[Drip Store — Acessar site](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app)**
+A aplicação utiliza componentes reutilizáveis, navegação entre páginas com React Router DOM e estilos organizados com CSS Modules.
 
-## 💻 Repositório
+## 2. Acesso ao projeto
 
-[GitHub — projeto-geracao-tech-4](https://github.com/JMorais00/projeto-geracao-tech-4)
+- **Aplicação publicada:** [Abrir Drip Store na Vercel](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/)
+- **Repositório GitHub:** [JMorais00/projeto-geracao-tech-4](https://github.com/JMorais00/projeto-geracao-tech-4)
 
----
+### Acesso direto às páginas publicadas
 
-## ✨ Funcionalidades desenvolvidas
+| Página                  | Rota         | Link                                                                                      |
+| ----------------------- | ------------ | ----------------------------------------------------------------------------------------- |
+| Home                    | `/`          | [Abrir Home](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/)             |
+| Listagem de Produtos    | `/produtos`  | [Abrir Produtos](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/produtos) |
+| Visualização do Produto | `/product/1` | [Abrir Produto](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/product/1) |
 
-### Página inicial — Home
+As três rotas acima correspondem às páginas implementadas no projeto. A rota `/product/1` utiliza o padrão de parâmetro `/product/:id`.
 
-- Cabeçalho com logotipo, campo de pesquisa, acesso à conta e ícone do carrinho.
-- Menu de navegação.
-- Galeria de banners com navegação entre imagens.
-- Seção de coleções em destaque.
-- Seção de produtos em alta.
-- Rodapé com informações e redes sociais.
+## 3. Páginas implementadas
 
-### Página de produtos — Listagem
+### 3.1 Home — `/`
 
-- Exibição de produtos em cards.
-- Filtro por marca.
-- Filtro por categoria.
-- Ordenação por menor e maior preço.
-- Atualização da quantidade de resultados conforme os filtros selecionados.
-- Layout responsivo.
+Página inicial da loja. Apresenta:
 
-### Página de detalhes do produto
+- Cabeçalho com identidade visual e navegação;
+- Campo de pesquisa visual;
+- Banner principal com galeria de imagens;
+- Seção de coleções em destaque;
+- Seção de produtos em alta;
+- Cards de produtos;
+- Rodapé com informações da loja.
 
-- Galeria de imagens com miniaturas.
-- Navegação entre imagens.
-- Informações do produto.
-- Avaliação e descrição.
-- Exibição de preço.
-- Seleção de tamanho.
-- Botão de compra.
+### 3.2 Listagem de Produtos — `/produtos`
+
+Página destinada à apresentação dos produtos disponíveis no projeto. Contém:
+
+- Área de identificação dos resultados;
+- Filtros visuais por marca e categoria;
+- Opções de ordenação por preço;
+- Cards com imagens, nomes e preços;
+- Organização dos produtos em uma listagem responsiva.
+
+Os filtros e a ordenação possuem interação com os dados disponíveis nesta versão. Como o projeto utiliza uma quantidade limitada de produtos de exemplo, nem todas as opções de filtro necessariamente apresentarão resultados.
+
+### 3.3 Visualização do Produto — `/product/1`
+
+Página de detalhes do produto. Apresenta:
+
+- Galeria de imagens;
+- Nome do produto;
+- Categoria, marca e referência;
+- Avaliação e quantidade de avaliações;
+- Preço;
+- Descrição;
+- Opções de tamanho;
+- Botão de compra apresentado na interface;
 - Seção de produtos relacionados.
 
-### Responsividade
+A seleção de tamanho possui interação visual. O botão de compra faz parte da interface apresentada nesta entrega; não há integração com carrinho, pagamento ou processamento de pedidos.
 
-- Adaptação das páginas para diferentes tamanhos de tela.
-- Ajustes de navegação, galerias, filtros e cards para dispositivos móveis.
+## 4. Rotas e funcionalidades fora do escopo
 
----
+O cabeçalho e outras áreas da interface podem apresentar opções adicionais de navegação. Entretanto, **nem todos esses itens correspondem a páginas implementadas**.
 
-## 🧩 Componentes desenvolvidos
+A atividade foi desenvolvida com foco nas três páginas principais descritas neste README. Por isso, as páginas adicionais abaixo não fazem parte das funcionalidades entregues:
 
-O projeto utiliza componentes reutilizáveis para organizar a interface:
+| Item                    | Caminho previsto | Situação nesta versão |
+| ----------------------- | ---------------- | --------------------- |
+| Home                    | `/`              | Implementada          |
+| Produtos                | `/produtos`      | Implementada          |
+| Visualização do Produto | `/product/1`     | Implementada          |
+| Categorias              | `/categorias`    | Não implementada      |
+| Meus Pedidos            | `/pedidos`       | Não implementada      |
+| Entrar                  | `/login`         | Não implementada      |
+| Cadastre-se             | `/cadastrar`     | Não implementada      |
 
-| Componente     | Responsabilidade                     |
-| -------------- | ------------------------------------ |
-| Header         | Cabeçalho e navegação                |
-| Footer         | Rodapé da aplicação                  |
-| Logo           | Exibição da identidade visual        |
-| Gallery        | Galeria de imagens e miniaturas      |
-| Section        | Organização das seções da página     |
-| ProductCard    | Apresentação individual dos produtos |
-| ProductListing | Listagem de produtos                 |
-| FilterGroup    | Opções de filtros                    |
-| ProductOptions | Seleção de tamanho                   |
-| BuyBox         | Informações e opções de compra       |
-| ProductDetails | Componente de detalhes do produto    |
-| Information    | Exibição de informações no rodapé    |
+**Esclarecimento para avaliação:** as opções **Categorias** e **Meus Pedidos** podem aparecer como elementos de navegação visual, mas suas páginas não foram desenvolvidas nesta entrega, pois não faziam parte do escopo principal definido para a atividade. O mesmo se aplica às páginas de Login e Cadastro. Portanto, esses caminhos não devem ser considerados funcionalidades concluídas ou rotas disponíveis.
 
----
+Também não foi implementado um fluxo completo de compra, checkout, autenticação de usuários ou gerenciamento de pedidos.
 
-## 📄 Páginas e rotas
+## 5. Tecnologias e ferramentas
 
-| Página               | Rota           |
-| -------------------- | -------------- |
-| Home                 | `/`            |
-| Listagem de produtos | `/produtos`    |
-| Detalhes do produto  | `/product/:id` |
+- **React:** construção da interface por meio de componentes;
+- **JavaScript:** linguagem utilizada no desenvolvimento;
+- **Vite:** ambiente de desenvolvimento e ferramenta de build;
+- **React Router DOM:** configuração da navegação entre páginas;
+- **HTML5:** estrutura da aplicação;
+- **CSS3:** estilização;
+- **CSS Modules:** organização dos estilos por componente e página;
+- **ESLint:** análise estática e verificação de padrões do código;
+- **Git e GitHub:** versionamento e hospedagem do código-fonte;
+- **Vercel:** publicação da aplicação.
 
-A navegação entre as páginas é realizada com React Router DOM.
+## 6. Organização dos arquivos
 
----
-
-## 🛠️ Tecnologias utilizadas
-
-- **React:** construção da interface por componentes.
-- **JavaScript:** lógica e interatividade.
-- **Vite:** ambiente de desenvolvimento e build.
-- **React Router DOM:** navegação entre páginas.
-- **CSS Modules:** estilização e organização dos estilos.
-- **ESLint:** análise e padronização do código.
-- **Git e GitHub:** versionamento e hospedagem do código.
-- **Vercel:** publicação do projeto.
-
----
-
-## 📁 Estrutura do projeto
+A estrutura principal do projeto está organizada da seguinte maneira:
 
 ```text
 projeto-digital-store/
-│
 ├── public/
-│   ├── imagens dos produtos
-│   ├── banners
-│   └── coleções
+│   ├── home-slide-1.jpeg
+│   ├── home-slide-8jpeg
+│   ├── collection-1.png
+│   ├── collection-2.png
+│   ├── collection-3.png
+│   ├── product-thumb-1.jpeg
+│   └── product-thumb-5.jpeg
+│   ├── produc-image-1.jpeg
+│   ├── produc-image-5.jpeg
 │
 ├── src/
 │   ├── assets/
+│   │   └── arquivos SVG e outros recursos importados
 │   │
 │   ├── components/
 │   │   ├── BuyBox/
@@ -134,71 +144,115 @@ projeto-digital-store/
 │   │   └── ProductViewPage/
 │   │
 │   ├── App.jsx
-│   ├── App.css
 │   ├── index.css
 │   └── main.jsx
 │
-├── .gitignore
-├── eslint.config.js
 ├── index.html
 ├── package.json
 ├── package-lock.json
-└── vite.config.js
+├── vercel.json
+└── README.md
 ```
 
----
+### Responsabilidade de alguns arquivos e componentes
 
-## 🚀 Como executar o projeto localmente
+- `src/main.jsx`: ponto de entrada da aplicação e configuração do `BrowserRouter`;
+- `src/App.jsx`: definição das rotas e associação de cada rota à sua página;
+- `src/pages/Layout/`: estrutura compartilhada de cabeçalho, conteúdo principal e rodapé;
+- `src/pages/HomePage/`: conteúdo da página inicial;
+- `src/pages/ProductListingPage/`: conteúdo da listagem de produtos;
+- `src/pages/ProductViewPage/`: conteúdo da visualização do produto;
+- `src/components/Header/`: cabeçalho e navegação;
+- `src/components/Footer/`: rodapé;
+- `src/components/Gallery/`: galeria de imagens;
+- `src/components/ProductCard/`: card individual de produto;
+- `src/components/ProductListing/`: apresentação de uma coleção de cards;
+- `src/components/BuyBox/`: informações e área de opções do produto;
+- `src/components/ProductOptions/`: opções de tamanho;
+- `vercel.json`: regra de reescrita para permitir que as rotas do React Router sejam carregadas ao acessar diretamente uma URL publicada.
+
+## 7. Configuração das rotas na Vercel
+
+O projeto utiliza `BrowserRouter` e React Router DOM para controlar a navegação no lado do cliente.
+
+Para que uma rota interna também funcione quando acessada diretamente pelo navegador ou após atualizar a página, foi adicionado o arquivo `vercel.json` na raiz do projeto.
+
+A configuração direciona as requisições para `index.html`, permitindo que o React Router identifique a rota solicitada e carregue a página correspondente.
+
+Conteúdo utilizado:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+
+Com essa configuração, as rotas implementadas podem ser acessadas diretamente pela URL publicada, sem depender de entrar primeiro pela Home.
+
+## 8. Como executar o projeto localmente
 
 ### Pré-requisitos
 
-- Node.js instalado.
-- npm instalado.
+- Node.js instalado;
+- npm instalado;
 - Git instalado.
 
-### 1. Clone o repositório
+### 8.1 Clonar o repositório
 
 ```bash
 git clone https://github.com/JMorais00/projeto-geracao-tech-4.git
 ```
 
-### 2. Acesse a pasta do projeto
+### 8.2 Entrar na pasta do projeto
 
 ```bash
 cd projeto-geracao-tech-4
 ```
 
-### 3. Instale as dependências
+> Observação: o nome da pasta local pode ser diferente caso o repositório seja clonado com outro nome.
+
+### 8.3 Instalar as dependências
 
 ```bash
 npm install
 ```
 
-### 4. Inicie o servidor de desenvolvimento
+### 8.4 Iniciar o servidor de desenvolvimento
 
 ```bash
 npm run dev
 ```
 
-### 5. Acesse a aplicação
-
-Abra no navegador o endereço local apresentado pelo Vite, normalmente:
+O Vite exibirá no terminal o endereço local para abrir a aplicação. Normalmente:
 
 ```text
-http://localhost:5173
+http://localhost:5173/
 ```
 
----
+### 8.5 Rotas locais
 
-## 🧪 Verificação do projeto
+Com o servidor em execução, as páginas podem ser acessadas por:
 
-Foram executados os seguintes comandos para verificar o código e a compilação:
+- Home: `http://localhost:5173/`
+- Produtos: `http://localhost:5173/produtos`
+- Visualização do Produto: `http://localhost:5173/product/1`
 
-### ESLint
+## 9. Verificação do projeto
+
+O projeto disponibiliza os seguintes scripts:
+
+### Análise com ESLint
 
 ```bash
 npm run lint
 ```
+
+Esse comando executa a análise estática dos arquivos do projeto.
 
 ### Build de produção
 
@@ -206,24 +260,43 @@ npm run lint
 npm run build
 ```
 
-Ambos foram executados com sucesso durante o desenvolvimento.
+Esse comando gera a versão de produção da aplicação na pasta `dist/`.
+
+Durante o desenvolvimento, os comandos `npm run lint` e `npm run build` foram executados e finalizaram sem erros.
+
+## 10. Responsividade
+
+A interface recebeu ajustes para diferentes larguras de tela, incluindo dispositivos móveis.
+
+Foram considerados, entre outros elementos:
+
+- Cabeçalho e navegação;
+- Galeria de imagens;
+- Cards e listagem de produtos;
+- Área de detalhes do produto;
+- Seções de conteúdo;
+- Rodapé.
+
+## 11. Dados e limitações desta versão
+
+Esta versão tem finalidade acadêmica e demonstrativa. Os produtos apresentados utilizam dados e imagens de exemplo definidos no próprio projeto.
+
+Não há integração com API ou banco de dados. Também não há autenticação, cadastro de usuários, persistência de carrinho, pagamento ou gerenciamento de pedidos.
+
+Os elementos visuais que representam ações não descritas como funcionais neste README não devem ser interpretados como fluxos completos de e-commerce.
+
+## 12. Considerações finais
+
+O desenvolvimento do Drip Store teve como objetivo aplicar conceitos de desenvolvimento Front-end com React, JavaScript, componentização, reutilização de componentes, organização de estilos, navegação entre páginas e responsividade.
+
+As páginas principais implementadas nesta entrega são:
+
+1. Home;
+2. Listagem de Produtos;
+3. Visualização do Produto.
+
+O código-fonte está disponível no GitHub e a aplicação está publicada na Vercel para facilitar o acesso e a avaliação.
 
 ---
 
-## 🎨 Layout e identidade visual
-
-A interface foi desenvolvida com base no projeto visual disponibilizado no Figma, utilizando a identidade visual da Drip Store, com foco em:
-
-- Organização e hierarquia visual.
-- Padronização dos componentes.
-- Reutilização de estilos.
-- Fidelidade ao layout de referência.
-- Experiência em diferentes tamanhos de tela.
-
----
-
-## 👩‍💻 Autoria
-
-Projeto acadêmico desenvolvido como parte das atividades da Digital College.
-
-**Projeto:** Drip Store — Digital Store.
+**Projeto acadêmico desenvolvido para a atividade da Digital College / Geração Tech.**
