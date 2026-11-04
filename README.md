@@ -299,4 +299,11 @@ O código-fonte está disponível no GitHub e a aplicação está publicada na V
 
 ---
 
-**Projeto acadêmico desenvolvido para a atividade da Digital College / Geração Tech.**
+## Autoria
+
+**Projeto desenvolvido individualmente por:**
+
+- Maria Jayna Morais Marques
+
+**Curso:** Digital College / Geração Tech 4.0
+**Projeto:** Drip Store — Desenvolvimento Front-end
