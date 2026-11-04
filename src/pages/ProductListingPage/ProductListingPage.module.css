@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.sidebar {
+  width: 308px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sortContainer {
+  width: 308px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sortLabel {
+  font-size: 16px;
+  color: var(--dark-gray-2);
+  font-weight: 600;
+}
+
+.sortSelect {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--light-gray-2);
+  color: var(--dark-gray-2);
+}
+
+.filterCard {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 4px;
+}
+
+.filterTitle {
+  font-size: 16px;
+  color: var(--dark-gray-2);
+  font-weight: 700;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--light-gray-2);
+  margin: 15px 0;
+}
+
+.content {
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    gap: 20px;
+  }
+
+  .sidebar {
+    width: 260px;
+  }
+
+  .sortContainer {
+    width: 260px;
+  }
+
+  .filterCard {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .sortContainer {
+    width: 100%;
+  }
+
+  .filterCard {
+    width: 100%;
+  }
+
+  .content {
+    width: 100%;
+  }
+}

@@ -1,0 +1,63 @@
+.card {
+  width: 292px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imageContainer {
+  width: 292px;
+  height: 321px;
+  background-color: var(--white);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.name {
+  font-size: 16px;
+  color: var(--dark-gray-2);
+  font-weight: 600;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.regularPrice,
+.discountPrice {
+  font-size: 24px;
+  color: var(--dark-gray);
+  font-weight: 700;
+}
+
+.oldPrice {
+  font-size: 24px;
+  color: var(--light-gray);
+  text-decoration: line-through;
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    max-width: 292px;
+  }
+
+  .imageContainer {
+    width: 100%;
+  }
+
+  .prices {
+    flex-wrap: wrap;
+  }
+}

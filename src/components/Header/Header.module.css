@@ -1,0 +1,120 @@
+.header {
+  background-color: var(--white);
+  padding: 20px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.topHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.searchForm {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 45px 12px 20px;
+  background-color: var(--light-gray-3);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.searchButton {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.searchIcon {
+  font-size: 24px;
+  color: var(--dark-gray-3);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.registerLink {
+  color: var(--dark-gray-2);
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+.loginBtn {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cartIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  color: var(--dark-gray-2);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav a.active {
+  color: var(--primary);
+  font-weight: bold;
+  border-bottom: 2px solid var(--primary);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 20px;
+  }
+
+  .topHeader {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .searchForm {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+
+  .registerLink {
+    font-size: 14px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}

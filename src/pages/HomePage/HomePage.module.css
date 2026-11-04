@@ -1,0 +1,22 @@
+.collections {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.collectionImg {
+  width: 30%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .collections {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .collectionImg {
+    width: 100%;
+  }
+}

@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 40px 0;
+}
+
+.gallery {
+  flex: 1;
+  min-width: 0;
+}
+
+.buyBox {
+  width: 440px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    gap: 24px;
+  }
+
+  .buyBox {
+    width: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .gallery,
+  .buyBox {
+    width: 100%;
+  }
+}
