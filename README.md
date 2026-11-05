@@ -14,7 +14,7 @@ A aplicação utiliza componentes reutilizáveis, navegação entre páginas com
 
 ## 2. Acesso ao projeto
 
-- **Aplicação publicada:** [Abrir Drip Store na Vercel](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/)
+- **Aplicação publicada:** [Abrir Drip Store na Vercel](https://projeto-geracao-tech-4.vercel.app/)
 - **Repositório GitHub:** [JMorais00/projeto-geracao-tech-4](https://github.com/JMorais00/projeto-geracao-tech-4)
 
 ### Acesso direto às páginas publicadas
