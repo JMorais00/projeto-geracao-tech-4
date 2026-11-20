@@ -61,3 +61,11 @@
     flex-wrap: wrap;
   }
 }
+
+.card {
+  color: inherit;
+  text-decoration: none;
+}
+.card:hover .name {
+  color: var(--primary);
+}

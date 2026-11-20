@@ -1,16 +1,13 @@
-# Drip Store — Projeto Digital College
+# Drip Store — Projeto Full Stack
 
 ## 1. Apresentação
 
-O **Drip Store** é um projeto acadêmico de desenvolvimento Front-end criado com **React** e **JavaScript**. A proposta é construir a interface de uma loja virtual de artigos esportivos com base no layout de referência disponibilizado no Figma.
+O **Drip Store** é um projeto acadêmico de loja virtual desenvolvido com **React** no frontend e **Node.js, Express e MySQL** no backend. A interface foi construída com base no layout de referência disponibilizado no Figma e conectada a uma API própria para consultar produtos, categorias e detalhes dos produtos.
 
-O desenvolvimento foi concentrado nas três páginas principais da atividade:
+O projeto reúne duas partes no mesmo repositório:
 
-1. Home;
-2. Listagem de Produtos;
-3. Visualização do Produto.
-
-A aplicação utiliza componentes reutilizáveis, navegação entre páginas com React Router DOM e estilos organizados com CSS Modules.
+- **Frontend:** aplicação React com navegação por React Router DOM e estilos organizados com CSS Modules.
+- **Backend:** API REST desenvolvida com Express, Sequelize e MySQL, com autenticação JWT para operações protegidas.
 
 ## 2. Acesso ao projeto
 
@@ -19,134 +16,186 @@ A aplicação utiliza componentes reutilizáveis, navegação entre páginas com
 
 ### Acesso direto às páginas publicadas
 
-| Página                  | Rota         | Link                                                                                      |
-| ----------------------- | ------------ | ----------------------------------------------------------------------------------------- |
-| Home                    | `/`          | [Abrir Home](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/)             |
-| Listagem de Produtos    | `/produtos`  | [Abrir Produtos](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/produtos) |
+| Página | Rota | Link |
+|---|---|---|
+| Home | `/` | [Abrir Home](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/) |
+| Listagem de Produtos | `/produtos` | [Abrir Produtos](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/produtos) |
 | Visualização do Produto | `/product/1` | [Abrir Produto](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/product/1) |
 
-As três rotas acima correspondem às páginas implementadas no projeto. A rota `/product/1` utiliza o padrão de parâmetro `/product/:id`.
+A rota `/product/1` utiliza o padrão de parâmetro `/product/:id`.
 
-## 3. Páginas implementadas
+> **Nota sobre a publicação:** o link da Vercel representa a aplicação frontend publicada. Para que os dados dinâmicos sejam carregados em um ambiente publicado, a API também precisa estar hospedada e a variável `VITE_API_URL` precisa apontar para o endereço público da API. A configuração local descrita neste README utiliza `http://localhost:3000`.
+
+## 3. Páginas e funcionalidades do frontend
 
 ### 3.1 Home — `/`
 
 Página inicial da loja. Apresenta:
 
 - Cabeçalho com identidade visual e navegação;
-- Campo de pesquisa visual;
+- Campo de pesquisa;
 - Banner principal com galeria de imagens;
 - Seção de coleções em destaque;
-- Seção de produtos em alta;
+- Seção de produtos em alta, carregados pela API;
 - Cards de produtos;
 - Rodapé com informações da loja.
 
+Os banners e as imagens das coleções permanecem como arquivos estáticos do frontend.
+
 ### 3.2 Listagem de Produtos — `/produtos`
 
-Página destinada à apresentação dos produtos disponíveis no projeto. Contém:
+Página destinada à apresentação dos produtos disponíveis na API. Contém:
 
 - Área de identificação dos resultados;
-- Filtros visuais por marca e categoria;
+- Filtros por marca e categoria;
 - Opções de ordenação por preço;
 - Cards com imagens, nomes e preços;
-- Organização dos produtos em uma listagem responsiva.
+- Listagem responsiva.
 
-Os filtros e a ordenação possuem interação com os dados disponíveis nesta versão. Como o projeto utiliza uma quantidade limitada de produtos de exemplo, nem todas as opções de filtro necessariamente apresentarão resultados.
+Os filtros e a ordenação interagem com os dados retornados pela API.
 
-### 3.3 Visualização do Produto — `/product/1`
+### 3.3 Visualização do Produto — `/product/:id`
 
 Página de detalhes do produto. Apresenta:
 
 - Galeria de imagens;
 - Nome do produto;
-- Categoria, marca e referência;
-- Avaliação e quantidade de avaliações;
-- Preço;
-- Descrição;
+- Categoria, marca e referência, quando disponíveis;
+- Avaliação e quantidade de avaliações, quando disponíveis;
+- Preço e descrição;
 - Opções de tamanho;
 - Botão de compra apresentado na interface;
 - Seção de produtos relacionados.
 
-A seleção de tamanho possui interação visual. O botão de compra faz parte da interface apresentada nesta entrega; não há integração com carrinho, pagamento ou processamento de pedidos.
+A seleção de tamanho possui interação visual. O botão de compra não realiza uma compra: não há integração com carrinho, pagamento ou processamento de pedidos.
 
-## 4. Rotas e funcionalidades fora do escopo
+## 4. Backend e API
 
-O cabeçalho e outras áreas da interface podem apresentar opções adicionais de navegação. Entretanto, **nem todos esses itens correspondem a páginas implementadas**.
+A API disponibiliza endpoints REST para usuários, categorias e produtos.
 
-A atividade foi desenvolvida com foco nas três páginas principais descritas neste README. Por isso, as páginas adicionais abaixo não fazem parte das funcionalidades entregues:
+### Principais recursos
 
-| Item                    | Caminho previsto | Situação nesta versão |
-| ----------------------- | ---------------- | --------------------- |
-| Home                    | `/`              | Implementada          |
-| Produtos                | `/produtos`      | Implementada          |
-| Visualização do Produto | `/product/1`     | Implementada          |
-| Categorias              | `/categorias`    | Não implementada      |
-| Meus Pedidos            | `/pedidos`       | Não implementada      |
-| Entrar                  | `/login`         | Não implementada      |
-| Cadastre-se             | `/cadastrar`     | Não implementada      |
+| Recurso | Operações |
+|---|---|
+| Usuários | Cadastro, login por token, consulta, atualização e exclusão |
+| Categorias | Pesquisa, consulta, criação, atualização e exclusão |
+| Produtos | Pesquisa, consulta, criação, atualização e exclusão |
+| Saúde da API | Endpoint `/health` |
 
-**Esclarecimento para avaliação:** as opções **Categorias** e **Meus Pedidos** podem aparecer como elementos de navegação visual, mas suas páginas não foram desenvolvidas nesta entrega, pois não faziam parte do escopo principal definido para a atividade. O mesmo se aplica às páginas de Login e Cadastro. Portanto, esses caminhos não devem ser considerados funcionalidades concluídas ou rotas disponíveis.
+As consultas públicas de produtos e categorias são utilizadas pelo frontend. As operações de criação, atualização e exclusão protegidas exigem um token JWT válido.
 
-Também não foi implementado um fluxo completo de compra, checkout, autenticação de usuários ou gerenciamento de pedidos.
+O projeto não define perfis ou papéis de acesso: qualquer usuário autenticado pode executar as operações protegidas de gerenciamento de produtos e categorias. O usuário só pode alterar ou excluir a própria conta.
 
-## 5. Tecnologias e ferramentas
+### Endpoints utilizados pelo frontend
 
-- **React:** construção da interface por meio de componentes;
-- **JavaScript:** linguagem utilizada no desenvolvimento;
+| Funcionalidade | Endpoint |
+|---|---|
+| Produtos em alta na Home | `GET /v1/product/search?limit=8&enabled=true` |
+| Listagem de produtos | `GET /v1/product/search` |
+| Categorias dos filtros | `GET /v1/category/search?limit=-1` |
+| Pesquisa do cabeçalho | `GET /v1/product/search` (filtragem do termo nos resultados retornados) |
+| Detalhes do produto | `GET /v1/product/:id` |
+| Produtos relacionados | `GET /v1/product/search` |
+
+O frontend carrega as imagens dos produtos pelos caminhos disponibilizados pela API.
+
+### Limites da integração
+
+- A Home exibe até oito produtos habilitados retornados pela API.
+- A listagem utiliza os produtos, categorias e marcas existentes nos dados retornados.
+- A pesquisa do cabeçalho filtra os resultados por nome, descrição e marca.
+- A ordenação por preço considera o preço com desconto quando ele é maior que zero.
+- A página de detalhes carrega o produto pelo ID da rota e apresenta imagens e opções cadastradas.
+- Banners e imagens das coleções continuam estáticos no frontend.
+
+## 5. Funcionalidades fora do escopo
+
+O projeto concentra-se nas três páginas principais do frontend e na API necessária para disponibilizar os dados da loja.
+
+Os itens abaixo não representam fluxos completos implementados:
+
+| Item | Situação |
+|---|---|
+| Home | Implementada |
+| Listagem de Produtos | Implementada |
+| Visualização do Produto | Implementada |
+| API de usuários e autenticação JWT | Implementada |
+| API de categorias | Implementada |
+| API de produtos | Implementada |
+| Página independente de categorias | Não implementada |
+| Carrinho de compras | Não implementado |
+| Checkout e pagamento | Não implementados |
+| Processamento de pedidos | Não implementado |
+| Página de Meus Pedidos | Não implementada |
+| Páginas de Login e Cadastro no frontend | Não implementadas |
+
+O backend possui endpoints de cadastro e autenticação de usuários, mas isso não significa que exista uma interface de login ou cadastro no frontend.
+
+## 6. Tecnologias e ferramentas
+
+### Frontend
+- **React:** construção da interface por componentes;
+- **JavaScript:** linguagem de desenvolvimento;
 - **Vite:** ambiente de desenvolvimento e ferramenta de build;
-- **React Router DOM:** configuração da navegação entre páginas;
-- **HTML5:** estrutura da aplicação;
-- **CSS3:** estilização;
+- **React Router DOM:** navegação entre páginas;
+- **HTML5 e CSS3:** estrutura e estilização;
 - **CSS Modules:** organização dos estilos por componente e página;
-- **ESLint:** análise estática e verificação de padrões do código;
+- **ESLint:** análise estática do código.
+
+### Backend
+- **Node.js:** ambiente de execução JavaScript;
+- **Express:** criação da API REST;
+- **Sequelize:** ORM para comunicação com o banco de dados;
+- **MySQL 8:** banco de dados relacional;
+- **JWT (JSON Web Token):** autenticação das rotas protegidas;
+- **bcrypt:** hash e verificação de senhas;
+- **Joi:** validação de dados;
+- **Jest e Supertest:** testes automatizados.
+
+### Ferramentas
 - **Git e GitHub:** versionamento e hospedagem do código-fonte;
-- **Vercel:** publicação da aplicação.
+- **Vercel:** publicação do frontend.
 
-## 6. Organização dos arquivos
+## 7. Organização dos arquivos
 
-A estrutura principal do projeto está organizada da seguinte maneira:
+A estrutura principal do repositório é:
 
 ```text
 projeto-digital-store/
+├── backend/
+│   ├── media/
+│   │   ├── product-4/
+│   │   ├── product-5/
+│   │   ├── product-6/
+│   │   ├── product-7/
+│   │   └── product-8/
+│   ├── scripts/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── database/
+│   │   │   └── migrations/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── utils/
+│   │   └── validators/
+│   ├── tests/
+│   ├── .env.example
+│   ├── package.json
+│   └── README.md
 ├── public/
-│   ├── home-slide-1.jpeg
-│   ├── home-slide-8jpeg
-│   ├── collection-1.png
-│   ├── collection-2.png
-│   ├── collection-3.png
-│   ├── product-thumb-1.jpeg
-│   └── product-thumb-5.jpeg
-│   ├── produc-image-1.jpeg
-│   ├── produc-image-5.jpeg
-│
 ├── src/
 │   ├── assets/
-│   │   └── arquivos SVG e outros recursos importados
-│   │
 │   ├── components/
-│   │   ├── BuyBox/
-│   │   ├── FilterGroup/
-│   │   ├── Footer/
-│   │   ├── Gallery/
-│   │   ├── Header/
-│   │   ├── Information/
-│   │   ├── Logo/
-│   │   ├── ProductCard/
-│   │   ├── ProductDetails/
-│   │   ├── ProductListing/
-│   │   ├── ProductOptions/
-│   │   └── Section/
-│   │
 │   ├── pages/
-│   │   ├── HomePage/
-│   │   ├── Layout/
-│   │   ├── ProductListingPage/
-│   │   └── ProductViewPage/
-│   │
+│   ├── services/
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
-│
+├── .env.example
+├── .gitignore
 ├── index.html
 ├── package.json
 ├── package-lock.json
@@ -154,148 +203,242 @@ projeto-digital-store/
 └── README.md
 ```
 
-### Responsabilidade de alguns arquivos e componentes
+### Responsabilidade de alguns arquivos
 
-- `src/main.jsx`: ponto de entrada da aplicação e configuração do `BrowserRouter`;
-- `src/App.jsx`: definição das rotas e associação de cada rota à sua página;
-- `src/pages/Layout/`: estrutura compartilhada de cabeçalho, conteúdo principal e rodapé;
-- `src/pages/HomePage/`: conteúdo da página inicial;
-- `src/pages/ProductListingPage/`: conteúdo da listagem de produtos;
-- `src/pages/ProductViewPage/`: conteúdo da visualização do produto;
-- `src/components/Header/`: cabeçalho e navegação;
-- `src/components/Footer/`: rodapé;
-- `src/components/Gallery/`: galeria de imagens;
-- `src/components/ProductCard/`: card individual de produto;
-- `src/components/ProductListing/`: apresentação de uma coleção de cards;
-- `src/components/BuyBox/`: informações e área de opções do produto;
-- `src/components/ProductOptions/`: opções de tamanho;
-- `vercel.json`: regra de reescrita para permitir que as rotas do React Router sejam carregadas ao acessar diretamente uma URL publicada.
+**Frontend**
+- `src/main.jsx`: ponto de entrada e configuração do `BrowserRouter`;
+- `src/App.jsx`: definição das rotas do frontend;
+- `src/pages/`: páginas da aplicação;
+- `src/components/`: componentes reutilizáveis;
+- `src/services/api.js`: configuração da comunicação entre frontend e API;
+- `vercel.json`: regra de reescrita para as rotas do React Router na Vercel.
 
-## 7. Configuração das rotas na Vercel
+**Backend**
+- `backend/src/server.js`: inicialização do servidor;
+- `backend/src/app.js`: configuração da aplicação Express;
+- `backend/src/config/`: configurações de ambiente, autenticação e banco;
+- `backend/src/database/migrations/`: migrations responsáveis pela criação e evolução das tabelas;
+- `backend/src/models/`: models do Sequelize;
+- `backend/src/routes/`: rotas da API;
+- `backend/src/controllers/`: controllers;
+- `backend/src/services/`: regras de negócio;
+- `backend/tests/`: testes automatizados;
+- `backend/media/`: imagens dos produtos disponibilizadas pela API.
 
-O projeto utiliza `BrowserRouter` e React Router DOM para controlar a navegação no lado do cliente.
+## 8. Requisitos para executar localmente
 
-Para que uma rota interna também funcione quando acessada diretamente pelo navegador ou após atualizar a página, foi adicionado o arquivo `vercel.json` na raiz do projeto.
+- Node.js 22 ou superior (o projeto foi testado com Node.js 24);
+- npm;
+- MySQL 8;
+- Git.
 
-A configuração direciona as requisições para `index.html`, permitindo que o React Router identifique a rota solicitada e carregue a página correspondente.
+O frontend e o backend possuem instalações e servidores independentes. Os comandos devem ser executados nos diretórios indicados.
 
-Conteúdo utilizado:
+## 9. Instalação e configuração do backend
 
-```json
-{
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
-```
+### 9.1 Entrar na pasta do backend
 
-Com essa configuração, as rotas implementadas podem ser acessadas diretamente pela URL publicada, sem depender de entrar primeiro pela Home.
-
-## 8. Como executar o projeto localmente
-
-### Pré-requisitos
-
-- Node.js instalado;
-- npm instalado;
-- Git instalado.
-
-### 8.1 Clonar o repositório
+A partir da raiz do repositório:
 
 ```bash
-git clone https://github.com/JMorais00/projeto-geracao-tech-4.git
+cd backend
 ```
 
-### 8.2 Entrar na pasta do projeto
-
-```bash
-cd projeto-geracao-tech-4
-```
-
-> Observação: o nome da pasta local pode ser diferente caso o repositório seja clonado com outro nome.
-
-### 8.3 Instalar as dependências
+### 9.2 Instalar as dependências
 
 ```bash
 npm install
 ```
 
-### 8.4 Iniciar o servidor de desenvolvimento
+### 9.3 Criar o banco de dados
+
+No MySQL, crie o banco utilizado pela aplicação:
+
+```sql
+CREATE DATABASE drip_store
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+```
+
+Para executar os testes, crie também o banco de testes:
+
+```sql
+CREATE DATABASE drip_store_test
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+```
+
+### 9.4 Configurar as variáveis de ambiente
+
+Na pasta `backend`, copie o arquivo de exemplo:
+
+```bash
+cp .env.example .env
+```
+
+Abra `backend/.env` e configure os dados de acesso ao MySQL, principalmente `DB_USER` e `DB_PASSWORD`. Gere também um segredo JWT próprio:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+```
+
+Use o valor gerado em `JWT_SECRET`. Não publique o arquivo `.env` nem compartilhe seu segredo JWT.
+
+O arquivo de exemplo contém as configurações iniciais do servidor, banco de dados e CORS. Para execução local, a origem do frontend deve ser `http://localhost:5173`.
+
+### 9.5 Aplicar as migrations
+
+Ainda dentro de `backend`:
+
+```bash
+npm run db:check
+npm run db:migrate
+npm run db:status
+```
+
+As migrations criam as tabelas necessárias no banco `drip_store`.
+
+### 9.6 Iniciar a API
 
 ```bash
 npm run dev
 ```
 
-O Vite exibirá no terminal o endereço local para abrir a aplicação. Normalmente:
+A API ficará disponível em:
 
 ```text
-http://localhost:5173/
+http://localhost:3000
 ```
 
-### 8.5 Rotas locais
+Para verificar se o servidor está ativo, acesse:
 
-Com o servidor em execução, as páginas podem ser acessadas por:
+```text
+http://localhost:3000/health
+```
+
+A resposta esperada é:
+
+```json
+{"status":"ok"}
+```
+
+Mantenha esse terminal aberto enquanto utiliza o frontend.
+
+## 10. Instalação e execução do frontend
+
+Abra um **segundo terminal** e volte à raiz do repositório:
+
+```bash
+cd ..
+```
+
+Se o terminal foi aberto em outra pasta, entre diretamente na pasta `projeto-digital-store`.
+
+Instale as dependências do frontend:
+
+```bash
+npm install
+```
+
+Crie o arquivo de ambiente a partir do exemplo:
+
+```bash
+cp .env.example .env
+```
+
+O arquivo `.env` do frontend deve conter:
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+
+Inicie o Vite:
+
+```bash
+npm run dev
+```
+
+Normalmente, a aplicação ficará disponível em:
+
+```text
+http://localhost:5173
+```
+
+Com o backend e o frontend em execução, acesse as páginas:
 
 - Home: `http://localhost:5173/`
 - Produtos: `http://localhost:5173/produtos`
-- Visualização do Produto: `http://localhost:5173/product/1`
+- Visualização do produto: `http://localhost:5173/product/4`
 
-## 9. Verificação do projeto
+Os IDs disponíveis dependem dos produtos cadastrados no banco de dados.
 
-O projeto disponibiliza os seguintes scripts:
+## 11. Dados demonstrativos
 
-### Análise com ESLint
+As migrations criam a estrutura do banco, mas não inserem automaticamente os produtos demonstrativos.
+
+O backend inclui o script `scripts/reset-store-to-sneakers.js`, preparado para cadastrar os dados demonstrativos de tênis utilizados no projeto.
+
+**Atenção:** esse script substitui os produtos e as categorias existentes no banco configurado. Execute-o somente se desejar recriar os dados demonstrativos e tiver certeza de que pode substituir os dados atuais.
+
+A execução deve ser feita dentro da pasta `backend`:
+
+```bash
+node scripts/reset-store-to-sneakers.js
+```
+
+As imagens correspondentes estão incluídas em `backend/media/`.
+
+## 12. Testes e verificações
+
+### Frontend
+
+Execute os comandos na raiz do repositório:
 
 ```bash
 npm run lint
-```
-
-Esse comando executa a análise estática dos arquivos do projeto.
-
-### Build de produção
-
-```bash
 npm run build
 ```
 
-Esse comando gera a versão de produção da aplicação na pasta `dist/`.
+- `npm run lint`: executa a análise estática com ESLint;
+- `npm run build`: gera os arquivos de produção na pasta `dist/`.
 
-Durante o desenvolvimento, os comandos `npm run lint` e `npm run build` foram executados e finalizaram sem erros.
+### Backend
 
-## 10. Responsividade
+Execute os comandos dentro da pasta `backend`:
 
-A interface recebeu ajustes para diferentes larguras de tela, incluindo dispositivos móveis.
+```bash
+npm test
+```
 
-Foram considerados, entre outros elementos:
+O backend possui **417 testes automatizados**, organizados em 15 suítes, aprovados na verificação realizada durante o desenvolvimento.
 
-- Cabeçalho e navegação;
-- Galeria de imagens;
-- Cards e listagem de produtos;
-- Área de detalhes do produto;
-- Seções de conteúdo;
-- Rodapé.
+Outros comandos disponíveis:
 
-## 11. Dados e limitações desta versão
+```bash
+npm run check:bcrypt
+npm run db:check
+npm run db:status
+```
 
-Esta versão tem finalidade acadêmica e demonstrativa. Os produtos apresentados utilizam dados e imagens de exemplo definidos no próprio projeto.
+Os testes automatizados utilizam o banco `drip_store_test`, separado do banco principal. A configuração de teste deve apontar para esse banco, nunca para `drip_store`.
 
-Não há integração com API ou banco de dados. Também não há autenticação, cadastro de usuários, persistência de carrinho, pagamento ou gerenciamento de pedidos.
+## 13. Responsividade
 
-Os elementos visuais que representam ações não descritas como funcionais neste README não devem ser interpretados como fluxos completos de e-commerce.
+A interface recebeu ajustes para diferentes larguras de tela, incluindo dispositivos móveis. Foram considerados o cabeçalho, a navegação, a galeria, os cards, a listagem de produtos, os detalhes e o rodapé.
 
-## 12. Considerações finais
+## 14. Segurança e arquivos de ambiente
 
-O desenvolvimento do Drip Store teve como objetivo aplicar conceitos de desenvolvimento Front-end com React, JavaScript, componentização, reutilização de componentes, organização de estilos, navegação entre páginas e responsividade.
+Os arquivos `.env` e `.env.test` contêm configurações locais e não devem ser enviados ao GitHub. O repositório disponibiliza arquivos `.env.example` como referência para a configuração.
 
-As páginas principais implementadas nesta entrega são:
+Cada pessoa que executar o projeto deve criar seus próprios arquivos de ambiente e preencher suas credenciais locais. Não utilize senhas reais ou segredos JWT em arquivos versionados.
 
-1. Home;
-2. Listagem de Produtos;
-3. Visualização do Produto.
+## 15. Considerações finais
 
-O código-fonte está disponível no GitHub e a aplicação está publicada na Vercel para facilitar o acesso e a avaliação.
+O Drip Store reúne o desenvolvimento de uma interface de loja virtual com React e a implementação de uma API própria com Node.js, Express, Sequelize e MySQL.
+
+O projeto aplica conceitos de componentização, reutilização de código, navegação, responsividade, integração frontend/backend, modelagem relacional, migrations, validação de dados, autenticação JWT e testes automatizados.
+
+O código-fonte está disponível no GitHub e a aplicação frontend possui uma versão publicada na Vercel.
 
 ---
 
@@ -305,5 +448,5 @@ O código-fonte está disponível no GitHub e a aplicação está publicada na V
 
 - Maria Jayna Morais Marques
 
-**Curso:** Digital College / Geração Tech 4.0
-**Projeto:** Drip Store — Desenvolvimento Front-end
+**Curso:** Digital College / Geração Tech 4.0  
+**Projeto:** Drip Store — Desenvolvimento Full Stack
