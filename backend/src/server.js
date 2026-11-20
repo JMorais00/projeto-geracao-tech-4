@@ -1,7 +1,7 @@
-require('./config/env');
-const app = require('./app');
-const { sequelize } = require('./models');
-const { getJwtSecret } = require('./config/auth');
+require("./config/env");
+const app = require("./app");
+const { sequelize } = require("./models");
+const { getJwtSecret } = require("./config/auth");
 
 const PORT = process.env.PORT || 3000;
 
@@ -15,14 +15,14 @@ async function start() {
 
   try {
     await sequelize.authenticate();
-    console.log('Conexão com o MySQL estabelecida.');
+    console.log("Conexão com o MySQL estabelecida.");
   } catch (error) {
-    console.error('Não foi possível conectar ao MySQL:', error.message);
+    console.error("Não foi possível conectar ao MySQL:", error.message);
     process.exit(1);
   }
 
-  app.listen(PORT, () => {
-    console.log(`API rodando em http://localhost:${PORT}`);
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`API rodando na porta ${PORT}`);
   });
 }
 
