@@ -1,6 +1,24 @@
 # Drip Store API
 
-Backend da loja virtual Drip Store, desenvolvido com Node.js, Express, Sequelize e MySQL. Este backend faz parte do mesmo repositório GitHub do frontend React/Vite, localizado na pasta `backend/`.
+Backend da loja virtual Drip Store, desenvolvido com Node.js, Express, Sequelize e MySQL. Este backend faz parte do mesmo repositório GitHub do frontend React/Vite e está localizado na pasta `backend/`.
+
+## Aplicação publicada
+
+- **API:** https://projeto-geracao-tech-4-production.up.railway.app
+- **Verificação de saúde:** https://projeto-geracao-tech-4-production.up.railway.app/health
+- **Frontend integrado:** https://projeto-geracao-tech-4.vercel.app/
+
+## Tecnologias
+
+- Node.js;
+- Express;
+- Sequelize;
+- MySQL;
+- JWT;
+- bcrypt;
+- Joi;
+- Jest;
+- Supertest.
 
 ## Requisitos
 
@@ -11,13 +29,13 @@ Backend da loja virtual Drip Store, desenvolvido com Node.js, Express, Sequelize
 
 ## Instalação
 
-Execute os comandos a seguir dentro da pasta `backend`:
+Execute os comandos a seguir dentro da pasta `backend/`:
 
 ```bash
 npm install
 ```
 
-Crie os arquivos de ambiente a partir do exemplo:
+Crie o arquivo de ambiente a partir do exemplo:
 
 ```bash
 cp .env.example .env
@@ -67,7 +85,9 @@ As migrations criam as tabelas necessárias. O projeto utiliza migrations do Seq
 npm run dev
 ```
 
-A API inicia normalmente em `http://localhost:3000`.
+A API inicia normalmente em:
+
+http://localhost:3000
 
 Verificação de saúde:
 
@@ -78,7 +98,7 @@ curl http://localhost:3000/health
 Resposta esperada:
 
 ```json
-{"status":"ok"}
+{ "status": "ok" }
 ```
 
 Para iniciar sem Nodemon:
@@ -126,21 +146,22 @@ backend/
 
 ### Saúde da API
 
-| Método | Endpoint | Descrição |
-|---|---|---|
-| GET | `/health` | Verifica se a API está ativa |
+| Método | Endpoint  | Descrição                    |
+| ------ | --------- | ---------------------------- |
+| GET    | `/health` | Verifica se a API está ativa |
 
 ### Usuários e autenticação
 
-| Método | Endpoint | Autenticação |
-|---|---|---|
-| POST | `/v1/user` | Pública |
-| POST | `/v1/user/token` | Pública |
-| GET | `/v1/user/:id` | Pública |
-| PUT | `/v1/user/:id` | JWT |
-| DELETE | `/v1/user/:id` | JWT |
+| Método | Endpoint         | Autenticação |
+| ------ | ---------------- | ------------ |
+| POST   | `/v1/user`       | Pública      |
+| POST   | `/v1/user/token` | Pública      |
+| GET    | `/v1/user/:id`   | Pública      |
+| PUT    | `/v1/user/:id`   | JWT          |
+| DELETE | `/v1/user/:id`   | JWT          |
 
 Regras principais:
+
 - O cadastro exige `firstname`, `surname`, `email`, `password` e `confirmPassword`.
 - A senha é armazenada como hash bcrypt e não é devolvida nas respostas.
 - O login retorna um token JWT.
@@ -149,25 +170,25 @@ Regras principais:
 
 ### Categorias
 
-| Método | Endpoint | Autenticação |
-|---|---|---|
-| GET | `/v1/category/search` | Pública |
-| GET | `/v1/category/:id` | Pública |
-| POST | `/v1/category` | JWT |
-| PUT | `/v1/category/:id` | JWT |
-| DELETE | `/v1/category/:id` | JWT |
+| Método | Endpoint              | Autenticação |
+| ------ | --------------------- | ------------ |
+| GET    | `/v1/category/search` | Pública      |
+| GET    | `/v1/category/:id`    | Pública      |
+| POST   | `/v1/category`        | JWT          |
+| PUT    | `/v1/category/:id`    | JWT          |
+| DELETE | `/v1/category/:id`    | JWT          |
 
 A pesquisa aceita parâmetros como `limit`, `page`, `use_in_menu` e `fields`. O valor `limit=-1` retorna todos os registros.
 
 ### Produtos
 
-| Método | Endpoint | Autenticação |
-|---|---|---|
-| GET | `/v1/product/search` | Pública |
-| GET | `/v1/product/:id` | Pública |
-| POST | `/v1/product` | JWT |
-| PUT | `/v1/product/:id` | JWT |
-| DELETE | `/v1/product/:id` | JWT |
+| Método | Endpoint             | Autenticação |
+| ------ | -------------------- | ------------ |
+| GET    | `/v1/product/search` | Pública      |
+| GET    | `/v1/product/:id`    | Pública      |
+| POST   | `/v1/product`        | JWT          |
+| PUT    | `/v1/product/:id`    | JWT          |
+| DELETE | `/v1/product/:id`    | JWT          |
 
 A pesquisa de produtos aceita parâmetros como `limit`, `page`, `fields`, `match`, `category_ids`, `price-range` e filtros por opções.
 
@@ -181,14 +202,14 @@ O projeto não define papéis de usuário, como administrador. Portanto, qualque
 
 As migrations estão em `src/database/migrations`:
 
-| Migration | Tabela ou alteração |
-|---|---|
-| `create-users` | `users` |
-| `create-categories` | `categories` |
-| `create-products` | `products` |
-| `create-product-images` | `product_images` |
-| `create-product-options` | `product_options` |
-| `create-product-categories` | `product_categories` |
+| Migration                      | Tabela ou alteração                                                           |
+| ------------------------------ | ----------------------------------------------------------------------------- |
+| `create-users`                 | `users`                                                                       |
+| `create-categories`            | `categories`                                                                  |
+| `create-products`              | `products`                                                                    |
+| `create-product-images`        | `product_images`                                                              |
+| `create-product-options`       | `product_options`                                                             |
+| `create-product-categories`    | `product_categories`                                                          |
 | `add-extra-fields-to-products` | Campos opcionais `brand`, `reference`, `rating` e `reviews_count` em produtos |
 
 Para consultar o estado das migrations:
@@ -244,25 +265,91 @@ npm run db:check
 
 ## Scripts disponíveis
 
-| Script | Função |
-|---|---|
-| `npm start` | Inicia a API sem Nodemon |
-| `npm run dev` | Inicia a API com Nodemon |
-| `npm test` | Executa os testes automatizados |
-| `npm run test:watch` | Executa os testes em modo watch |
-| `npm run test:coverage` | Executa os testes com cobertura |
-| `npm run check:bcrypt` | Verifica o funcionamento do bcrypt |
-| `npm run db:check` | Verifica a conexão com o MySQL |
-| `npm run db:status` | Mostra o estado das migrations do banco principal |
-| `npm run db:status:test` | Mostra o estado das migrations do banco de testes |
-| `npm run db:migrate` | Aplica migrations no banco principal |
-| `npm run db:migrate:test` | Aplica migrations no banco de testes |
-| `npm run db:migrate:undo` | Desfaz a última migration do banco principal |
-| `npm run db:migrate:undo:all` | Desfaz todas as migrations do banco principal |
+| Script                             | Função                                            |
+| ---------------------------------- | ------------------------------------------------- |
+| `npm start`                        | Inicia a API sem Nodemon                          |
+| `npm run dev`                      | Inicia a API com Nodemon                          |
+| `npm test`                         | Executa os testes automatizados                   |
+| `npm run test:watch`               | Executa os testes em modo watch                   |
+| `npm run test:coverage`            | Executa os testes com cobertura                   |
+| `npm run check:bcrypt`             | Verifica o funcionamento do bcrypt                |
+| `npm run db:check`                 | Verifica a conexão com o MySQL                    |
+| `npm run db:status`                | Mostra o estado das migrations do banco principal |
+| `npm run db:status:test`           | Mostra o estado das migrations do banco de testes |
+| `npm run db:migrate`               | Aplica migrations no banco principal              |
+| `npm run db:migrate:test`          | Aplica migrations no banco de testes              |
+| `npm run db:migrate:undo`          | Desfaz a última migration do banco principal      |
+| `npm run db:migrate:undo:all`      | Desfaz todas as migrations do banco principal     |
+| `npm run db:migrate:undo:all:test` | Desfaz todas as migrations do banco de testes     |
+| `npm run db:seed`                  | Executa os seeds configurados no projeto          |
+| `npm run db:seed:undo`             | Desfaz os seeds configurados no projeto           |
+
+## Publicação no Railway
+
+O backend está hospedado no Railway, integrado a um banco de dados MySQL da própria plataforma.
+
+**Endereço publicado:**
+
+https://projeto-geracao-tech-4-production.up.railway.app
+
+**Verificação de saúde:**
+
+https://projeto-geracao-tech-4-production.up.railway.app/health
+
+### Configuração do serviço
+
+O serviço do backend utiliza a pasta `backend/` como diretório raiz. A aplicação utiliza a variável `PORT` fornecida pelo Railway e fica disponível externamente pelo domínio público configurado na plataforma.
+
+As variáveis de ambiente são configuradas diretamente nas configurações do serviço Railway, sem serem incluídas no repositório.
+
+Principais variáveis utilizadas:
+
+| Variável         | Finalidade                                |
+| ---------------- | ----------------------------------------- |
+| `NODE_ENV`       | Define o ambiente de execução             |
+| `PORT`           | Porta disponibilizada pelo Railway        |
+| `BASE_URL`       | Endereço público da API                   |
+| `CORS_ORIGIN`    | Origem autorizada do frontend             |
+| `DB_HOST`        | Endereço do servidor MySQL                |
+| `DB_PORT`        | Porta do MySQL                            |
+| `DB_USER`        | Usuário do banco de dados                 |
+| `DB_PASSWORD`    | Senha do banco de dados                   |
+| `DB_NAME`        | Nome do banco de dados                    |
+| `JWT_SECRET`     | Segredo utilizado para assinar tokens JWT |
+| `JWT_EXPIRES_IN` | Tempo de validade dos tokens              |
+
+A conexão com o MySQL do Railway utiliza as variáveis fornecidas pelo serviço de banco de dados:
+
+- `MYSQLHOST`;
+- `MYSQLPORT`;
+- `MYSQLUSER`;
+- `MYSQLPASSWORD`.
+
+No serviço do backend, essas informações são referenciadas nas variáveis `DB_HOST`, `DB_PORT`, `DB_USER` e `DB_PASSWORD`. O banco utilizado na publicação está configurado como `railway`.
+
+### Migrations na publicação
+
+O comando de pre-deploy do serviço está configurado para executar:
+
+```bash
+npm run db:migrate
+```
+
+Assim, as migrations são aplicadas ao banco de produção durante o processo de publicação.
+
+### Integração com a Vercel
+
+O frontend está publicado na Vercel. A variável `VITE_API_URL` deve apontar para o endereço público da API.
+
+No backend, `CORS_ORIGIN` deve permitir a origem:
+
+https://projeto-geracao-tech-4.vercel.app/
 
 ## Variáveis de ambiente e segurança
 
-O arquivo `.env.example` apresenta os nomes das variáveis necessárias. Os arquivos `.env` e `.env.test` são locais e não devem ser enviados ao GitHub.
+O arquivo `.env.example` apresenta os nomes das variáveis necessárias para configurar o ambiente local.
+
+Os arquivos `.env` e `.env.test` são locais e não devem ser enviados ao GitHub.
 
 Nunca publique senhas do banco, tokens ou o valor de `JWT_SECRET`. Cada ambiente deve configurar seus próprios valores.
 

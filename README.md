@@ -12,19 +12,25 @@ O projeto reúne duas partes no mesmo repositório:
 ## 2. Acesso ao projeto
 
 - **Aplicação publicada:** [Abrir Drip Store na Vercel](https://projeto-geracao-tech-4.vercel.app/)
-- **Repositório GitHub:** [JMorais00/projeto-geracao-tech-4](https://github.com/JMorais00/projeto-geracao-tech-4)
+- **Repositório GitHub:** (https://github.com/JMorais00/projeto-geracao-tech-4)
+
+### Endereços de produção
+
+- **Frontend:** (https://projeto-geracao-tech-4.vercel.app/)
+- **Backend (API):** (https://projeto-geracao-tech-4-production.up.railway.app)
+- **Verificação da API:** (https://projeto-geracao-tech-4-production.up.railway.app/health)
 
 ### Acesso direto às páginas publicadas
 
-| Página | Rota | Link |
-|---|---|---|
-| Home | `/` | [Abrir Home](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/) |
-| Listagem de Produtos | `/produtos` | [Abrir Produtos](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/produtos) |
-| Visualização do Produto | `/product/1` | [Abrir Produto](https://projeto-geracao-tech-4-2mxrbfmmt-jm-orais00.vercel.app/product/1) |
+| Página                  | Rota         | Link                                                                 |
+| ----------------------- | ------------ | -------------------------------------------------------------------- |
+| Home                    | `/`          | [Abrir Home](https://projeto-geracao-tech-4.vercel.app/)             |
+| Listagem de Produtos    | `/produtos`  | [Abrir Produtos](https://projeto-geracao-tech-4.vercel.app/produtos) |
+| Visualização do Produto | `/product/1` | [Abrir Produto](https://projeto-geracao-tech-4.vercel.app/product/1) |
 
-A rota `/product/1` utiliza o padrão de parâmetro `/product/:id`.
+A rota `/product/1` utiliza o padrão de parâmetro `/product/:id`. Os IDs disponíveis dependem dos produtos cadastrados na API.
 
-> **Nota sobre a publicação:** o link da Vercel representa a aplicação frontend publicada. Para que os dados dinâmicos sejam carregados em um ambiente publicado, a API também precisa estar hospedada e a variável `VITE_API_URL` precisa apontar para o endereço público da API. A configuração local descrita neste README utiliza `http://localhost:3000`.
+> **Nota sobre a publicação:** o frontend está hospedado na Vercel e o backend está hospedado no Railway. Em produção, o frontend utiliza a variável `VITE_API_URL` configurada com o endereço público da API. Na execução local, a configuração utiliza `http://localhost:3000`.
 
 ## 3. Páginas e funcionalidades do frontend
 
@@ -75,12 +81,12 @@ A API disponibiliza endpoints REST para usuários, categorias e produtos.
 
 ### Principais recursos
 
-| Recurso | Operações |
-|---|---|
-| Usuários | Cadastro, login por token, consulta, atualização e exclusão |
-| Categorias | Pesquisa, consulta, criação, atualização e exclusão |
-| Produtos | Pesquisa, consulta, criação, atualização e exclusão |
-| Saúde da API | Endpoint `/health` |
+| Recurso      | Operações                                                   |
+| ------------ | ----------------------------------------------------------- |
+| Usuários     | Cadastro, login por token, consulta, atualização e exclusão |
+| Categorias   | Pesquisa, consulta, criação, atualização e exclusão         |
+| Produtos     | Pesquisa, consulta, criação, atualização e exclusão         |
+| Saúde da API | Endpoint `/health`                                          |
 
 As consultas públicas de produtos e categorias são utilizadas pelo frontend. As operações de criação, atualização e exclusão protegidas exigem um token JWT válido.
 
@@ -88,14 +94,16 @@ O projeto não define perfis ou papéis de acesso: qualquer usuário autenticado
 
 ### Endpoints utilizados pelo frontend
 
-| Funcionalidade | Endpoint |
-|---|---|
-| Produtos em alta na Home | `GET /v1/product/search?limit=8&enabled=true` |
-| Listagem de produtos | `GET /v1/product/search` |
-| Categorias dos filtros | `GET /v1/category/search?limit=-1` |
-| Pesquisa do cabeçalho | `GET /v1/product/search` (filtragem do termo nos resultados retornados) |
-| Detalhes do produto | `GET /v1/product/:id` |
-| Produtos relacionados | `GET /v1/product/search` |
+| Funcionalidade           | Endpoint                                                                                       |
+| ------------------------ | ---------------------------------------------------------------------------------------------- |
+| Produtos em alta na Home | `GET /v1/product/search?limit=-1&fields=id,enabled,name,slug,price,price_with_discount,images` |
+| Listagem de produtos     | `GET /v1/product/search`                                                                       |
+| Categorias dos filtros   | `GET /v1/category/search?limit=-1`                                                             |
+| Pesquisa do cabeçalho    | `GET /v1/product/search` (filtragem do termo nos resultados retornados)                        |
+| Detalhes do produto      | `GET /v1/product/:id`                                                                          |
+| Produtos relacionados    | `GET /v1/product/search`                                                                       |
+
+Na Home, a API retorna os produtos com os campos necessários para a exibição. O frontend filtra os produtos habilitados e apresenta os oito primeiros resultados.
 
 O frontend carrega as imagens dos produtos pelos caminhos disponibilizados pela API.
 
@@ -114,19 +122,19 @@ O projeto concentra-se nas três páginas principais do frontend e na API necess
 
 Os itens abaixo não representam fluxos completos implementados:
 
-| Item | Situação |
-|---|---|
-| Home | Implementada |
-| Listagem de Produtos | Implementada |
-| Visualização do Produto | Implementada |
-| API de usuários e autenticação JWT | Implementada |
-| API de categorias | Implementada |
-| API de produtos | Implementada |
-| Página independente de categorias | Não implementada |
-| Carrinho de compras | Não implementado |
-| Checkout e pagamento | Não implementados |
-| Processamento de pedidos | Não implementado |
-| Página de Meus Pedidos | Não implementada |
+| Item                                    | Situação          |
+| --------------------------------------- | ----------------- |
+| Home                                    | Implementada      |
+| Listagem de Produtos                    | Implementada      |
+| Visualização do Produto                 | Implementada      |
+| API de usuários e autenticação JWT      | Implementada      |
+| API de categorias                       | Implementada      |
+| API de produtos                         | Implementada      |
+| Página independente de categorias       | Não implementada  |
+| Carrinho de compras                     | Não implementado  |
+| Checkout e pagamento                    | Não implementados |
+| Processamento de pedidos                | Não implementado  |
+| Página de Meus Pedidos                  | Não implementada  |
 | Páginas de Login e Cadastro no frontend | Não implementadas |
 
 O backend possui endpoints de cadastro e autenticação de usuários, mas isso não significa que exista uma interface de login ou cadastro no frontend.
@@ -134,6 +142,7 @@ O backend possui endpoints de cadastro e autenticação de usuários, mas isso n
 ## 6. Tecnologias e ferramentas
 
 ### Frontend
+
 - **React:** construção da interface por componentes;
 - **JavaScript:** linguagem de desenvolvimento;
 - **Vite:** ambiente de desenvolvimento e ferramenta de build;
@@ -143,6 +152,7 @@ O backend possui endpoints de cadastro e autenticação de usuários, mas isso n
 - **ESLint:** análise estática do código.
 
 ### Backend
+
 - **Node.js:** ambiente de execução JavaScript;
 - **Express:** criação da API REST;
 - **Sequelize:** ORM para comunicação com o banco de dados;
@@ -153,8 +163,10 @@ O backend possui endpoints de cadastro e autenticação de usuários, mas isso n
 - **Jest e Supertest:** testes automatizados.
 
 ### Ferramentas
+
 - **Git e GitHub:** versionamento e hospedagem do código-fonte;
-- **Vercel:** publicação do frontend.
+- **Vercel:** publicação do frontend;
+- **Railway:** hospedagem do backend e do banco de dados MySQL.
 
 ## 7. Organização dos arquivos
 
@@ -164,11 +176,6 @@ A estrutura principal do repositório é:
 projeto-digital-store/
 ├── backend/
 │   ├── media/
-│   │   ├── product-4/
-│   │   ├── product-5/
-│   │   ├── product-6/
-│   │   ├── product-7/
-│   │   └── product-8/
 │   ├── scripts/
 │   ├── src/
 │   │   ├── config/
@@ -206,6 +213,7 @@ projeto-digital-store/
 ### Responsabilidade de alguns arquivos
 
 **Frontend**
+
 - `src/main.jsx`: ponto de entrada e configuração do `BrowserRouter`;
 - `src/App.jsx`: definição das rotas do frontend;
 - `src/pages/`: páginas da aplicação;
@@ -214,6 +222,7 @@ projeto-digital-store/
 - `vercel.json`: regra de reescrita para as rotas do React Router na Vercel.
 
 **Backend**
+
 - `backend/src/server.js`: inicialização do servidor;
 - `backend/src/app.js`: configuração da aplicação Express;
 - `backend/src/config/`: configurações de ambiente, autenticação e banco;
@@ -319,7 +328,7 @@ http://localhost:3000/health
 A resposta esperada é:
 
 ```json
-{"status":"ok"}
+{ "status": "ok" }
 ```
 
 Mantenha esse terminal aberto enquanto utiliza o frontend.
@@ -438,7 +447,7 @@ O Drip Store reúne o desenvolvimento de uma interface de loja virtual com React
 
 O projeto aplica conceitos de componentização, reutilização de código, navegação, responsividade, integração frontend/backend, modelagem relacional, migrations, validação de dados, autenticação JWT e testes automatizados.
 
-O código-fonte está disponível no GitHub e a aplicação frontend possui uma versão publicada na Vercel.
+O código-fonte está disponível no GitHub, o frontend está publicado na Vercel e o backend, juntamente com o banco de dados MySQL, está hospedado no Railway.
 
 ---
 
